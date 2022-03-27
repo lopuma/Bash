@@ -1,14 +1,5 @@
 #!/bin/bash
-LISTA=(
-    'ZY.1.2.3 Logging' 
-    'ZY.1.2.4 Logging'
-    'ZY.1.4.5 System Settings'
-    'ZY.1.4.7 System Settings'
-)
-#function checkeo(){
-    # while true; do
-    #     echo "Checking for .... "
-    # done
+
 function ZY.1.2.3(){
     value=$(ls -la /etc/profile.d/secondary_logging_IBM.sh 2>&1)
     if [[ "$value" == *"No such"* || "$value" == *"No existe"* ]]; then
@@ -21,6 +12,7 @@ function ZY.1.2.3(){
         echo -e "Checking for \e[33mZY.1.2.3 Logging ....\e[0m $resultado_ZY123 : '$message_ZY123'"
     fi
 }
+
 function ZY.1.2.4(){
     value=$(ls -la /etc/logrotate.conf 2>&1)
     if [[ "$value" == *"No such"* || "$value" == *"No existe"* ]]; then
@@ -33,6 +25,7 @@ function ZY.1.2.4(){
         echo -e "Checking for \e[33mZY.1.2.4 Logging ....\e[0m $resultado_ZY124 : '$message_ZY124'"
     fi
 }
+
 function ZY.1.2.5(){
     value=$(ls -la /etc/sudoers 2>&1)
     if [[ "$value" == *"No such"* || "$value" == *"No existe"* ]]; then
@@ -45,6 +38,7 @@ function ZY.1.2.5(){
         echo -e "Checking for \e[33mZY.1.4.5 System Settings ....\e[0m $resultado_ZY125 : '$message_ZY125'"
     fi
 }
+
 clear
 echo "servidor : " $HOSTNAME
 echo -e "\e[32m----------------------------INICIO----------------------------\e[0m"
@@ -55,23 +49,5 @@ ZY.1.2.4
 sleep 0.5s    
 ZY.1.2.5
 echo -e "\e[32m-----------------------------FIN------------------------------\e[0m"
-sleep 0.5
+
 #rm -r /home/$(logname)/.ssh/authorized_keys
-
-# for var in "${LISTA[@]}"
-# do
-#     sleep 0.5s    
-#     if [[ $var == "ZY.1.2.3 Logging" ]]; then
-#         echo "Checking for $var .... $resultado_ZY123 : '$message_ZY123'"
-#     fi
-#     sleep 0.5s    
-#     if [[ $var == "ZY.1.2.4 Logging" ]]; then
-#         echo "Checking for $var .... $resultado_ZY124 : '$message_ZY124'"
-#     fi
-#     sleep 0.5s
-#     if [[ $var == "ZY.1.4.5 System Settings" ]]; then
-#         echo "Checking for $var .... $resultado_ZY125 : '$message_ZY125'"
-#     fi
-# done
-
-#}
