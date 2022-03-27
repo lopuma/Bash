@@ -11,9 +11,9 @@ LISTA=(
     # done
 function ZY.1.2.3(){
     value=$(ls -la /etc/profile.d/secondary_logging_IBM.sh 2>&1)
-    if [[ "$value" == *"No such"* ]]; then
+    if [[ "$value" == *"No such"* || "$value" == *"No existe"* ]]; then
         resultado_ZY123="NO"
-        message_ZY123="No existe el fichero de secondary_loggin"
+        message_ZY123="$value"
         echo -e "Checking for \e[33mZY.1.2.3 Logging ....\e[0m $resultado_ZY123 : '$message_ZY123'"
     else
         resultado_ZY123="YES"
@@ -25,7 +25,7 @@ function ZY.1.2.4(){
     value=$(ls -la /etc/logrotate.conf 2>&1)
     if [[ "$value" == *"No such"* ]]; then
         resultado_ZY124="NO"
-        message_ZY124="No existe el fichero de /etc/logrotate.conf"
+        message_ZY124="$value"
         echo -e "Checking for \e[33mZY.1.2.4 Logging ....\e[0m $resultado_ZY124 : '$message_ZY124'"
     else
         resultado_ZY124="YES"
@@ -37,7 +37,7 @@ function ZY.1.2.5(){
     value=$(ls -la /etc/sudoers 2>&1)
     if [[ "$value" == *"No such"* ]]; then
         resultado_ZY125="NO"
-        message_ZY125="No existe el fichero de /etc/sudoers"
+        message_ZY125="$value"
         echo -e "Checking for \e[33mZY.1.4.5 System Settings ....\e[0m $resultado_ZY125 : '$message_ZY125'"
     else
         resultado_ZY125="YES"
