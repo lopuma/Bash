@@ -27,8 +27,8 @@ function ZY.1.2.4(){
 }
 
 function ZY.1.2.5(){
-    value=$(ls -la /etc/sudoers 2>&1)
-    if [[ "$value" == *"No such"* || "$value" == *"No existe"* ]]; then
+    value=$(cat /etc/sudoers 2>&1)
+    if [[ "$value" == *"Permission denied"* || "$value" == *"No existe"* ]]; then
         resultado_ZY125="NO"
         message_ZY125="$value"
         echo -e "Checking for \e[31mZY.1.4.5 System Settings ....\e[0m $resultado_ZY125 : '$message_ZY125'"
@@ -39,15 +39,19 @@ function ZY.1.2.5(){
     fi
 }
 
-clear
-echo "servidor : " $HOSTNAME
+#clear
+sleep 0.5s    
 echo -e "\e[32m----------------------------INICIO----------------------------\e[0m"
+echo ""
+echo -e "SERVIDOR : \e[1;34m$HOSTNAME\e[0m"
+echo ""
 sleep 0.5s    
 ZY.1.2.3
 sleep 0.5s    
 ZY.1.2.4
 sleep 0.5s    
 ZY.1.2.5
+sleep 0.5s
+echo ""
 echo -e "\e[32m-----------------------------FIN------------------------------\e[0m"
-
-#rm -r /home/$(logname)/.ssh/authorized_keys
+echo ""
